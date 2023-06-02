@@ -5,33 +5,27 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.multi.erp.DTO.MemberDTO;
-
 @Repository
-public class MemberDAOImpl implements MemberDAO {
-	
+public class MemberDAOImpl implements MemberDAO{
 	SqlSession sqlSessionTemplate;
 	public MemberDAOImpl() {
 		
 	}
-	
 	@Autowired
 	public MemberDAOImpl(SqlSession sqlSessionTemplate) {
 		super();
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
-
-
 	@Override
 	public List<MemberDTO> getTreeEmpList(String deptno) {
+		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("com.multi.erp.member.treedata", deptno);
 	}
 
 	@Override
 	public int insert(MemberDTO user) {
-		System.out.println("매퍼전: "+user);
-		return sqlSessionTemplate.insert("com.multi.erp.member.insert", user);
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert("com.multi.erp.member.insert",user);
 	}
 
 	@Override
@@ -66,16 +60,18 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberDTO login(MemberDTO loginUser) {
-		
-		return sqlSessionTemplate.selectOne("com.multi.erp.member.login",loginUser);
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("com.multi.erp.member.login", loginUser);
 	}
 
 	@Override
 	public boolean idCheck(String id) {
-		if(sqlSessionTemplate.selectOne("com.multi.erp.member.idcheck",id)	==null) {
-			return true;
+		boolean result = false;
+		MemberDTO user = sqlSessionTemplate.selectOne("com.multi.erp.member.idcheck", id);
+		if(user!=null) {
+			result = true;
 		}
-		return false;
+		return result;
 	}
 
 	@Override

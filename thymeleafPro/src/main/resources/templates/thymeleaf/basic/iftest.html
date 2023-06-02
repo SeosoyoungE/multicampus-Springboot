@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>산술연산자</h2>
+	<ul>
+		<li>100 + 200 <span th:text="100+200"></span></li>
+		<li>100 / 3 <span th:text="100/3"></span></li>
+		<li>100 % 2 <span th:text="100%2==0"></span></li>
+	</ul>
+	
+	<h2>비교연산자</h2>
+	<ul>
+		<li>100 > 200 <span th:text="100>200"></span></li>
+		<li>100 gt(lt) 200 <span th:text="100 gt 200"></span></li>
+		<li>100 >= 200 <span th:text="100 >= 200"></span></li>
+		<li>100 ge(le) 200 <span th:text="100 ge 200"></span></li>
+		<li>100 == 200 <span th:text="100 == 200"></span></li>
+		<li>100 != 200 <span th:text="100 != 200"></span></li>
+	</ul>
+	
+	<h2>if</h2>
+	<div>공유된 값:<span th:text="${myval}"></span></div>
+	<div>출력결과:<span th:text="성공" th:if="${myval >= 90}"></span></div>
+	<div>출력결과:<span th:text="실패" th:unless="${myval >= 90}"></span></div>
+
+	<h2>switch</h2>
+	<div th:switch="${myval}">
+		<span th:case="10">10대</span>
+		<span th:case="30">30대</span>
+		<span th:case="50">50대</span>
+		<span th:case="70">70대</span>
+		<span th:case="100">100대</span>
+		<span th:case="*">별표는 기타</span>
+	</div>
+</body>
+</html>

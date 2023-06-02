@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 타임리프의 사용하기 위해서 제공되는 속성을 사용함
+		이 속성은 태그 내부에 정의해야 한다. 해당사항이 없으면 출력이 안된다.
+	 -->
+	<h1>1. th:text사용하기</h1>
+	<div>
+		th:text의 사용:<span th:text="${msg}">test</span>
+	</div>
+	<div>
+		th:text의 사용:<span th:text="${data}"></span>
+	</div>
+	<h2>문자열과 함께 사용하기:[[${msg}]]</h2>
+	<h2>문자열과 함께 사용하기:[[${data}]]</h2>
+
+	<form action="/exam/th/formtest">
+		<!-- <input type="text" name="test1" value="basic" />  -->
+		<input type="text"
+			name="test1" value="basic" th:name="${data}" th:value="${data}" />
+			
+		<input type="text" name="test2" value="myinput" th:attrappend="class='_a'"/> 
+		<input type="text" name="test3" value="myinput" th:attrprepend="class='a_'"/> 
+		<input type="text" name="test4" value="myinput" th:classappend="a"/> 
+		<input	type="submit" value="서버로 전송하기">
+		<br/><br/>
+		<input type="checkbox" name="subject" value="java" checked="checked">java
+		<input type="checkbox" name="subject" value="spring" th:checked="true">spring
+		<input type="checkbox" name="subject" value="hadoop" th:checked="false">hadoop
+	</form>
+</body>
+</html>

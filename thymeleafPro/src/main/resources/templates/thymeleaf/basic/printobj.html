@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>1. 공유된 객체 출력</h2>
+	<div th:text="${person}"></div>
+	<div th:text="${person.id}"></div>
+	<div th:text="${person.name}"></div>
+	<div th:text="${person.score}"></div>
+	<hr/>
+	
+	<h2>2. 공유된 List객체에서 데이터 꺼내기</h2>
+	<table border="1">
+		<tr>
+			<th>아이디</th>
+			<th>성명</th>
+			<th>점수</th>
+			<td>상태값</td>
+		</tr>
+		<!-- 상태값 변수이름은 직접지정하거나,  변수명+Stat -->
+		<!-- 향상된for문이라 생각 -->
+		<tr th:each="p,status:${personlist}">
+			<td th:text="${p.id}">id</td>
+			<td th:text="${p.name}">name</td>
+			<td th:text="${p.score}">score</td>
+			<td>
+				index>><span th:text="${status.index}"></span>,<!-- 0부터 -->
+				count>><span th:text="${status.count}"></span>,<!-- 1부터 -->
+				size>><span th:text="${status.size}"></span>,
+				even>><span th:text="${status.even}"></span>,<!-- 짝수여부 -->
+				odd>><span th:text="${status.odd}"></span>,<!-- 홀수여부 -->
+				first>><span th:text="${status.first}"></span>,<!-- first인지 -->
+				last>><span th:text="${status.last}"></span>,<!-- last인지 -->
+				current>><span th:text="${status.current}"></span><!-- 현재객체값 -->
+			</td>
+		</tr>
+	</table>
+	
+	<h2>3. 조건에 따라  값 출력하기</h2>
+	<div th:each="p:${personlist}">
+		<div>아이디: <span th:text="${p.id}"></span></div>
+		<div>성명: <span th:text="${p.name}"></span></div> 
+		<div>점수: <span th:text="${p.score}"></span></div> 
+		<div>합격여부: <span th:text="합격" th:if="${p.score>=90}"></span> 
+		<span th:text="불합격" th:unless="${p.score>=90}"></span> </div> 
+		<br/>
+	</div>
+	
+	<h2>4. 하이퍼링크로 요청하기(get방식으로 데이터 보내기)</h2>
+	<!-- 괄호안에 파라미터명 -->
+	<a th:href="@{/th/formtest(id=${person.id})}">하이퍼링크요청하기</a>
+</body>
+</html>

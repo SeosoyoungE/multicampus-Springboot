@@ -4,27 +4,28 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="dept/dept_register" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/menu/insa_menu.jsp"/>
 		<put-attribute name="content" 
-			value="/WEB-INF/dept/dept_register.jsp"/>
+			value="/WEB-INF/views/dept/dept_register.jsp"/>
 	</definition>
-	<definition name="dept/dept_list" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+	<definition name="dept/list" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/views/menu/insa_menu.jsp"/>
 		<put-attribute name="content" 
-			value="/WEB-INF/dept/deptlist.jsp"/>
+			value="/WEB-INF/views/dept/deptlist.jsp"/>
 	</definition>
 	<definition name="dept/dept_read" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/menu/insa_menu.jsp"/>
 		<put-attribute name="content" 
-			value="/WEB-INF/dept/dept_read.jsp"/>
+			value="/WEB-INF/views/dept/dept_read.jsp"/>
 	</definition>
 	<definition name="dept/dept_update" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/menu/insa_menu.jsp"/>
 		<put-attribute name="content" 
-			value="/WEB-INF/dept/dept_update.jsp"/>
+			value="/WEB-INF/views/dept/dept_update.jsp"/>
 	</definition>
 	<definition name="dept/tree" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/dept/tree.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/menu/insa_menu.jsp"/>
+		<put-attribute name="content" 
+			value="/WEB-INF/views/dept/tree.jsp"/>
 	</definition>
 </tiles-definitions>

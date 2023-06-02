@@ -2,8 +2,6 @@ package com.multi.erp.member;
 
 import java.util.List;
 
-import com.multi.erp.DTO.MemberDTO;
-
 public interface MemberDAO {
 	List<MemberDTO> getTreeEmpList(String deptno);
 	int insert(MemberDTO user);

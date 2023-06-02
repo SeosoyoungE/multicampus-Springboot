@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>다른 페이지에서 include될 페이지이고 타임리프에서는 fragment라고 부른다.</h1>
+	<div th:fragment="content1" style="background-color: red">
+		삽입될영역1
+	</div>
+	<div th:fragment="content2(param1,param2)" style="background-color: orange;">
+		삽입될영역2
+		<span th:text="${param1}"></span>
+		<span th:text="${param2}"></span>
+	</div>
+</body>
+</html>

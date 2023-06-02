@@ -4,34 +4,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.multi.erp.DTO.MemberDTO;
+import com.multi.erp.member.MemberDTO;
 
-public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
+public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		MemberDTO user=(MemberDTO)request.getSession().getAttribute("user");
-		if(user==null) {
-			response.sendRedirect("/erp/emp/login.do");
-			return false;
+		//로그인사용자인 경우 세션에 user라는 이름의 어트리뷰트가 저장되어 있으므로 
+		//user가 없으면 로그인이 처리되지 않음을 의미
+		HttpSession session = request.getSession(false);
+		if(session!=null) {
+			MemberDTO user = (MemberDTO)session.getAttribute("user");
+			if(user==null) {//로그인하지 않은 상태
+				response.sendRedirect("/erp/emp/login.do");
+				//로그인하지 않은 사용자는 다음(뷰에서 선택한 path로 이동되지 않도록)으로 넘어가지 않도록 false를리턴
+				return false;
+			}
 		}
+		//로그인된 사용자는 다음으로 넘어갈 수 있도록 true리턴
 		return true;
+		
 	}
-
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		System.out.println("LOGIN체크interceptor post헨들러실행");
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		super.afterCompletion(request, response, handler, ex);
-	}
+	
 
 }

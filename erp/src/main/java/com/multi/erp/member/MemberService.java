@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.multi.erp.DTO.MemberDTO;
-
 public interface MemberService {
 	List<MemberDTO> getTreeEmpList(String deptno);
-	//사원등록 - DB이미지파일은 
+	//사원등록 - DB에 이미지파일은 
 	int insert(MemberDTO user);
 	int insert(MemberDTO user,MultipartFile file,String realpath,String filename);
 	public boolean idCheck(String id);
