@@ -17,6 +17,11 @@ public class ThtmeleafTestController {
 	public String index() {
 		return "thymeleaf/index";
 	}
+	@GetMapping("/fragmenttest")
+	public String fragmenttest() {
+		return "thymeleaf/basic/main";
+	}
+	
 	@GetMapping("/printmodel")
 	public String printModelAttr(Model model) {
 		model.addAttribute("msg","thymeleaf이용하기");
@@ -46,5 +51,13 @@ public class ThtmeleafTestController {
 		model.addAttribute("personlist", personlist);
 		model.addAttribute("person", p1);
 		return "thymeleaf/basic/printobj";
+	}
+	@GetMapping("/layout")
+	public String layout() {
+		return "thymeleaf/product/productread";
+	}
+	@GetMapping("/layout2")
+	public String layout2() {
+		return "thymeleaf/product/productlist";
 	}
 }

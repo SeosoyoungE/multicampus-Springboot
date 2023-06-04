@@ -7,10 +7,24 @@
 <body>
 	<h1>includePage에 정의된 내용 중 fragment 가져와서 연결하기</h1>
 	<h2>insert</h2>
-	<div th:insert="">
+	<div style="background-color: yellow;">
 		메인의영역------------1
+	</div>
+	<div th:insert="~{thymeleaf/basic/includePage :: content1}">
+	</div>
+	<div style="background-color: pink;">
+		메인의영역------------2
+	</div>
+	<div style="background-color: pink;">
+		메인의영역------------3
 	</div>
 	
 	<h2>replace</h2>
+	<div id="menu" th:replace="~{thymeleaf/basic/includePage :: content1}">
+	</div>
+	
+	<h2>변수를 넘겨서 사용하기</h2>
+	<div id="valtest" th:replace="~{thymeleaf/basic/includePage :: content2('bts','방탄소년단')}">
+	</div>
 </body>
 </html>
