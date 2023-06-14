@@ -18,7 +18,7 @@
 </head>
 <body>
 	<%
-	ArrayList<DeptDTO> deptlist = (ArrayList<DeptDTO>) request.getAttribute("deptlist");
+		ArrayList<Dept> deptlist = (ArrayList<Dept>) request.getAttribute("deptlist");
 	%>
 			<div >
 				<h3>부서목록</h3>
@@ -41,10 +41,11 @@
 							</tr>
 						</thead>
 						<tbody>
-						<% int size = deptlist.size();
-							for(int i=0;i<size;i++){
-								DeptDTO dept = deptlist.get(i);
-							%>	
+						<%
+							int size = deptlist.size();
+											for(int i=0;i<size;i++){
+												Dept dept = deptlist.get(i);
+						%>	
 								<tr>
 									<td><a href="/erp/dept/read.do?deptno=<%=dept.getDeptno() %>&state=READ"><%=dept.getDeptno()%></a></td>
 									<td><%=dept.getDeptname() %></td>
